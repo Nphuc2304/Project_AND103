@@ -6,8 +6,19 @@ var productModel = require("../model/products");
 // lấy hết sp
 router.get("/all", async function (req, res, next) {
   try {
-    var list = await productModel.find({});
-    res.status(200).json(list);
+    const token = req.header("Authorization").split(" ")[1];
+    if (token) {
+      JWT.verify(token, config.SECRETKEY, async function (err, id) {
+        if (err) {
+          res.status(403).json({ status: 403, err: err });
+        } else {
+          var list = await productModel.find({});
+          res.status(200).json(list);
+        }
+      });
+    } else {
+      res.status(401).json({ status: 401 });
+    }
   } catch (error) {
     res.status(404).json({ status: false, message: "Có lỗi xảy ra" });
   }
