@@ -1,5 +1,7 @@
 var express = require("express");
 var router = express.Router();
+const JWT = require("jsonwebtoken");
+const config = require("../util/tokenConfig");
 
 var productModel = require("../model/products");
 
@@ -13,7 +15,9 @@ router.get("/all", async function (req, res, next) {
           res.status(403).json({ status: 403, err: err });
         } else {
           var list = await productModel.find({});
-          res.status(200).json(list);
+          res
+            .status(200)
+            .json({ status: true, message: "Thành công", data: list });
         }
       });
     } else {
