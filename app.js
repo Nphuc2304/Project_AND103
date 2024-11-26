@@ -38,7 +38,7 @@ app.use("/email", emailRouter);
 // connect
 mongoose
   .connect(
-    "mongodb+srv://hnthao2705:wMJOmtF7T1klOU2V@cluster0.wy9n1.mongodb.net/mob103"
+    "mongodb+srv://hnthao2705:wMJOmtF7T1klOU2V@cluster0.wy9n1.mongodb.net/md1902"
   )
   .then(() => console.log("DB Connected"))
   .catch(() => this.console.log("DB error"));
