@@ -15,6 +15,7 @@ var productRouter = require("./routes/product");
 var studentRouter = require("./routes/student");
 var uploadRouter = require("./routes/upload");
 var emailRouter = require("./routes/email");
+var channelRouter = require("./routes/channel");
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use("/product", productRouter);
 app.use("/student", studentRouter);
 app.use("/upload", uploadRouter);
 app.use("/email", emailRouter);
+app.use("/channel", channelRouter);
 
 // connect
 mongoose

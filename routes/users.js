@@ -43,10 +43,10 @@ router.post("/logIn", async function (req, res) {
       res.status(200).json({ status: false, message: "Thg đb m giả danh ai" });
     } else {
       const token = JWT.sign({ id: checkUser._id }, config.SECRETKEY, {
-        expiresIn: "1m",
+        expiresIn: "1h",
       });
       const refreshToken = JWT.sign({ id: checkUser._id }, config.SECRETKEY, {
-        expiresIn: "1h",
+        expiresIn: "1d",
       });
       res.status(200).json({
         status: true,
