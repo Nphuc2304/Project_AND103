@@ -48,7 +48,9 @@ router.get("/get_all_channel", async function (req, res) {
           res.status(403).json({ status: 403, err: err });
         } else {
           var list = await channelModel.find({});
-          res.status(200).json(list);
+          res
+            .status(200)
+            .json({ status: true, message: "Thành công", data: list });
         }
       });
     } else {
