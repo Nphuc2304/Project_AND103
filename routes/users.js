@@ -40,7 +40,7 @@ router.post("/logIn", async function (req, res) {
       password: password,
     });
     if (checkUser == null) {
-      res.status(200).json({ status: false, message: "Thg đb m giả danh ai" });
+      res.status(400).json({ status: false, message: "Đăng nhập thất bại" });
     } else {
       const token = JWT.sign({ id: checkUser._id }, config.SECRETKEY, {
         expiresIn: "1h",
@@ -50,7 +50,7 @@ router.post("/logIn", async function (req, res) {
       });
       res.status(200).json({
         status: true,
-        message: "Chào mừng thượng đế quay lại",
+        message: "Đăng nhập thành công",
         token: token,
         refreshToken: refreshToken,
       });
